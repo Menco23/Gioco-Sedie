@@ -35,9 +35,9 @@ public class Scrittore {
         try {
             //1) apro il file
             br = new BufferedWriter(
-                    new FileWriter(nomeFile));
+                    new FileWriter(nomeFile, true));
             //2) scrivo nel buffer
-            br.write("IL thread "+ Id + "occupa il posto "+ posto );
+            br.write("Il thread "+ Id + " occupa il posto "+ posto );
             br.write("\n\r");
             //3) svuoto il buffer e salvo nel file i dati
             br.flush();         

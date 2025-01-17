@@ -24,32 +24,26 @@ public class Menculini_Gioco_Sedie {
      * @param args the command line arguments
      * 
      */
-    public static void main(String[] args) {
-        
-        Scrittore scrittore1 = new Scrittore("Risultato.txt");
-       
-    
-        
-        
-        Posto sedie[] = new Posto[NUMSEDIE];
+public static void main(String[] args) {
+    final int NUMSEDIE = 15;
+    Scrittore scrittore = new Scrittore("Risultato.txt");
 
-	for (int k = 0; k < sedie.length; k++)
-		sedie[k] = new Posto();
+    Posto sedie[] = new Posto[NUMSEDIE];
+    for (int k = 0; k < sedie.length; k++)
+        sedie[k] = new Posto();
 
-	Display display = new Display(sedie);
-	//System.out.println("Sto facendo partire il Display.");
-        logger.info("Sto facendo partire il Display.\n");
-	display.start();
+    Display display = new Display(sedie);
+    Logger.getLogger("GiocoSedie.TestGiocoSedie").info("Sto facendo partire il Display.\n");
+    display.start();
 
-	Partecipante array[] = new Partecipante[NUMSEDIE+1];
-	for (int i = 0; i < NUMSEDIE + 1; i++) {
-		array[i] = new Partecipante(sedie);
-                //System.out.println("Sto facendo partire il thread n." + array[i].getId());
-                logger.info("Sto facendo partire il thread id: " + array[i].getId()+" name: "+array[i].getName()+"\n");
-                array[i].start();
-          
-                }
-          System.out.println("Il Thread sta scrivendo il File.");
-	}
-      }
+    Partecipante array[] = new Partecipante[NUMSEDIE + 1];
+    for (int i = 0; i < NUMSEDIE + 1; i++) {
+        array[i] = new Partecipante(sedie, scrittore, i + 1);
+        Logger.getLogger("GiocoSedie.TestGiocoSedie")
+              .info("Sto facendo partire il thread id: " + array[i].getId() + " name: " + array[i].getName() + "\n");
+        array[i].start();
+    }
+    System.out.println("Il Thread sta scrivendo il File.");
+  }
+}
         

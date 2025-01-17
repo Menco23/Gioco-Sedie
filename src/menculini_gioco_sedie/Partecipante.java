@@ -8,10 +8,14 @@ class Partecipante extends Thread
 
 {
 	Posto sedie[];
+        private Scrittore scrittore;
+        private int idPartecipante;
 
-	public Partecipante(Posto sedie[]) {
+	public Partecipante(Posto sedie[], Scrittore scrittore, int idPartecipante) {
 
 		this.sedie = sedie;
+                this.scrittore = scrittore;
+                this.idPartecipante = idPartecipante;
 
 	}
 
@@ -24,7 +28,8 @@ class Partecipante extends Thread
 				if (sedie[i].occupa()) {
 					System.out.println("Sono il Thread " + this.getName()
 							+ ". Sono riuscito a sedermi sul posto " + i);
-					return;
+				scrittore.scrivi(idPartecipante, i);
+                                        return;
 				}
 			}
 			System.out.println("Sono il Thread " + this.getName()
