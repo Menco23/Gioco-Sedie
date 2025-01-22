@@ -4,6 +4,11 @@
  */
 package menculini_gioco_sedie;
 
+/**
+ * @author Menculini Tommaso
+ * Classe principale che avvia il gioco delle sedie.
+ */
+
 import java.util.logging.Logger;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
